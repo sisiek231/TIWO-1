@@ -1,2 +1,9 @@
-# TIWO-1
-Testowanie i weryfikacja oprogramowania - projekt 1. Semestr 5
+<h1>TIWO 1</h1>
+
+Projekt polegający na przeprowadzeniu testów biało-skrzynkowych. Obiektem testów jest prosta aplikacja bazodanowa przetrzymująca informacje o cosplayer'ach.   
+
+• GitHub: <a href="http://github.com/trzye/TIWO-1">Hide and Seek RPG</a>
+
+• Użyte technologie: <b>Java SE, Hibernate, MySQL, NodeJS, jUnit</b>
+
+• Tematy: Testowanie, weryfikacja, walidacja.
