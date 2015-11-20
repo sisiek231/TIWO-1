@@ -63,7 +63,7 @@ public class Crud {
 
     public static void delete(Object entity) throws UnknownEntityException, NotDeletedReferencesToOtherEntities {
         Boolean isEntityFound = false;
-        try{
+        //try{
         final Session session = Main.getSession();
         final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
         for (Object key : metadataMap.keySet()) {
@@ -76,14 +76,14 @@ public class Crud {
                 isEntityFound=true;
             }
         }
-        } catch (HibernateException e){
-            throw new NotDeletedReferencesToOtherEntities();
-        }
+        //} /*catch (HibernateException e){
+        //    throw new NotDeletedReferencesToOtherEntities();
+        //}*/
         if(!isEntityFound)
             throw new UnknownEntityException();
     }
 
     public static void main(final String[] args){
-        
+
     }
 }

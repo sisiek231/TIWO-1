@@ -14,6 +14,15 @@ public class FranchiseEntity {
     private String genre;
     private Collection<CosplayEntity> cosplaysByIdFranchise;
 
+    @Override
+    public String toString() {
+        return "FranchiseEntity{" +
+                "idFranchise=" + idFranchise +
+                ", name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
+
     @Id
     @Column(name = "id_franchise", nullable = false, insertable = true, updatable = true)
     public int getIdFranchise() {

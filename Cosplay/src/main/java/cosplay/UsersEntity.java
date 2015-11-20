@@ -14,6 +14,16 @@ public class UsersEntity {
     private int age;
     private Collection<CosplayEntity> cosplaysByIdUsers;
 
+    @Override
+    public String toString() {
+        return "UsersEntity{" +
+                "idUsers=" + idUsers +
+                ", nick='" + nick + '\'' +
+                ", age=" + age +
+                "\n, cosplaysByIdUsers=" + cosplaysByIdUsers +
+                '}';
+    }
+
     @Id
     @Column(name = "id_users", nullable = false, insertable = true, updatable = true)
     public int getIdUsers() {

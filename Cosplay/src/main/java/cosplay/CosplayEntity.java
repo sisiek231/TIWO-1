@@ -17,6 +17,17 @@ public class CosplayEntity {
     private UsersEntity usersByUsersId;
     private FranchiseEntity franchiseByFranchiseId;
 
+    @Override
+    public String toString() {
+        return "\n\tCosplayEntity{" +
+                "franchiseByFranchiseId=" + franchiseByFranchiseId +
+                ", idCosplay=" + idCosplay +
+                ", date=" + date +
+                ", characterName='" + characterName + '\'' +
+                ", isFavourite=" + isFavourite +
+                "}";
+    }
+
     @Id
     @Column(name = "id_cosplay", nullable = false, insertable = true, updatable = true)
     public int getIdCosplay() {
