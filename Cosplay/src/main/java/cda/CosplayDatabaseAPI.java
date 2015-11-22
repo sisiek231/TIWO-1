@@ -1,4 +1,4 @@
-package cdm;
+package cda;
 
 import cosplay.CosplayEntity;
 import cosplay.FranchiseEntity;

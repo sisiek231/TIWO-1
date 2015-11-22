@@ -1,4 +1,4 @@
-package cdm;
+package cda;
 
 import cosplay.CosplayEntity;
 import cosplay.FranchiseEntity;
@@ -10,9 +10,9 @@ import org.junit.Before;
 import java.util.List;
 
 /**
- * Created by jereczem on 22.11.15.
+ *  Tego nie zmieniamy!, to nie jest klasa do testowania.
  */
-public abstract class CdmTester {
+public abstract class Tester {
     @Before
     public void setUp() throws Exception {
         removeAllInstances(CosplayEntity.class);

@@ -1,4 +1,4 @@
-package cdm;
+package cda;
 
 import cosplay.UsersEntity;
 import org.junit.Assert;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 /**
  * Created by jereczem on 22.11.15.
  */
-public class CdmAddUserMethodTester extends CdmTester{
+public class AddUserMethodTester extends Tester {
     /*
-     * Każda klasa testująca powinna rozwijać klasę abstrakcyjną CdmTester,
+     * Każda klasa testująca powinna rozwijać klasę abstrakcyjną Tester,
      * dzięku czemu przed testowaniem każdej metody CAŁA baza danych jest usuwana, dlatego możemy przewidzieć dokładnie
      * jak powinna ona wyglądać po przeprowadzeniu operacji, które testujemy.
      */
