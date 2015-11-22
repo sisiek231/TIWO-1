@@ -4,6 +4,6 @@ Projekt polegający na przeprowadzeniu testów biało-skrzynkowych. Obiektem tes
 
 • GitHub: <a href="http://github.com/trzye/TIWO-1">TIWO 1</a>
 
-• Użyte technologie: <b>Java SE, Hibernate, MySQL, NodeJS, jUnit</b>
+• Użyte technologie: <b>Java SE, Hibernate, MySQL, jUnit</b>
 
 • Tematy: Testowanie, weryfikacja, walidacja.
