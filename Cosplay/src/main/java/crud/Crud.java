@@ -1,6 +1,6 @@
 package crud;
 
-import cosplay.Main;
+import cosplay.SessionGetter;
 import org.hibernate.*;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.metadata.ClassMetadata;
@@ -14,7 +14,7 @@ import java.util.Map;
 public class Crud {
     public static void create(Object entity)
             throws UnknownEntityException, DuplicateEntryException, NotCompletedEntityDataException {
-        final Session session = Main.getSession();
+        final Session session = SessionGetter.getSession();
         try{
             session.beginTransaction();
             session.save(entity);
@@ -29,7 +29,7 @@ public class Crud {
     }
 
     public static List read(Class entityClass) throws UnknownEntityException {
-        final Session session = Main.getSession();
+        final Session session = SessionGetter.getSession();
         final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
         for (Object key : metadataMap.keySet()) {
             final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);
@@ -45,7 +45,7 @@ public class Crud {
     }
 
     public static void update(Object entity) throws UnknownEntityException, DuplicateEntryException, NotCompletedEntityDataException, NotDeletedReferencesToOtherEntities {
-        final Session session = Main.getSession();
+        final Session session = SessionGetter.getSession();
         try{
             session.beginTransaction();
             session.update(entity);
@@ -64,7 +64,7 @@ public class Crud {
     public static void delete(Object entity) throws UnknownEntityException, NotDeletedReferencesToOtherEntities {
         Boolean isEntityFound = false;
         //try{
-        final Session session = Main.getSession();
+        final Session session = SessionGetter.getSession();
         final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
         for (Object key : metadataMap.keySet()) {
             final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);

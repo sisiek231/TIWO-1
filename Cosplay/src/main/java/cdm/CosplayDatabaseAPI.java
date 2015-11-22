@@ -1,19 +1,31 @@
+package cdm;
+
 import cosplay.CosplayEntity;
 import cosplay.FranchiseEntity;
-import cosplay.Main;
+import cosplay.SessionGetter;
 import cosplay.UsersEntity;
 import crud.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
+
 /**
- * Created by jereczem on 20.11.15.
+ * Created by Michał Jereczek on 20.11.15.
+ * Klasa do manipulacji bazą danych o cosplayerach.
  */
-public class CosplayDatabaseManipulator {
+public class CosplayDatabaseAPI {
+    /**
+     * Dodawanie użytkownika do bazy danych
+     *
+     * @param nick
+     * @param age
+     * @throws DuplicateEntryException - wyrzuca, gdy chcemy dodać isniejącego już użytkownika (nick się powtarza)
+     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws AgeLowerThenOneException - wyrzuca, gdy age jest <= 0
+     */
     public static void addUser(String nick, Integer age)
             throws DuplicateEntryException, EmptyStringException, AgeLowerThenOneException {
         if(nick.isEmpty())
@@ -21,7 +33,7 @@ public class CosplayDatabaseManipulator {
         if(age <= 0)
             throw new AgeLowerThenOneException();
 
-        Session session = Main.getSession();
+        Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ nick + "'");
         List users = getUserQuery.list();
         if(!users.isEmpty())
@@ -39,11 +51,19 @@ public class CosplayDatabaseManipulator {
         }
     }
 
+    /**
+     * Dodawanie uniwersum do bazy danych
+     *
+     * @param name
+     * @param genre
+     * @throws DuplicateEntryException - wyrzuca, gdy chcemy dodać isniejące już uniwersum (name się powtarza)
+     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
+     */
     public static void addFranchise(String name, String genre) throws DuplicateEntryException, EmptyStringException {
         if(name.isEmpty() || genre.isEmpty())
             throw new EmptyStringException();
 
-        Session session = Main.getSession();
+        Session session = SessionGetter.getSession();
         Query getFranchiseQuery = session.createQuery("SELECT F FROM FranchiseEntity F WHERE F.name=" + "'"+ name + "'");
         List franchises = getFranchiseQuery.list();
         if(!franchises.isEmpty())
@@ -61,11 +81,23 @@ public class CosplayDatabaseManipulator {
         }
     }
 
+    /**
+     * Dodanie nowej informacji o cosplay'u.
+     *
+     * @param date
+     * @param isFavourite
+     * @param characterName
+     * @param franchiseName
+     * @param userNick
+     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
+     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws CantFindFranchiseException -  wyrzuca, gdy nie można znaleźć franchiseName w bazie uniwersów
+     */
     public static void addCosplay(Timestamp date, Boolean isFavourite, String characterName, String franchiseName, String userNick)
             throws CantFindTheUserException, EmptyStringException, CantFindFranchiseException {
         if(characterName.isEmpty() || userNick.isEmpty() || franchiseName.isEmpty())
             throw new EmptyStringException();
-        Session session = Main.getSession();
+        Session session = SessionGetter.getSession();
 
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ userNick + "'");
         List users = getUserQuery.list();
@@ -97,8 +129,14 @@ public class CosplayDatabaseManipulator {
         }
     }
 
+    /**
+     * Usuwanie wszystkich danych użytkownika
+     *
+     * @param nick
+     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
+     */
     public static void deleteUserAndHisCosplayData(String nick) throws CantFindTheUserException {
-        Session session = Main.getSession();
+        Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ nick + "'");
         List users = getUserQuery.list();
         if(users.isEmpty())
@@ -117,12 +155,21 @@ public class CosplayDatabaseManipulator {
         }
     }
 
+    /**
+     * Zmiana wieku użytkownika
+     *
+     * @param nick
+     * @param newAge
+     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws AgeLowerThenOneException - wyrzuca, gdy newAge jest <= 0
+     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
+     */
     public static void changeUserAge(String nick, Integer newAge) throws EmptyStringException, AgeLowerThenOneException, CantFindTheUserException {
         if(nick.isEmpty())
             throw new EmptyStringException();
         if(newAge <= 0)
             throw new AgeLowerThenOneException();
-        Session session = Main.getSession();
+        Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'" + nick + "'");
         List users = getUserQuery.list();
         if(users.isEmpty())
@@ -143,10 +190,18 @@ public class CosplayDatabaseManipulator {
         }
     }
 
+    /**
+     * Zwracanie informacji o użytkowniku
+     *
+     * @param nick
+     * @return zwraca UsersEntity
+     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
+     */
     public static UsersEntity getUserData(String nick) throws EmptyStringException, CantFindTheUserException {
         if(nick.isEmpty())
             throw new EmptyStringException();
-        Session session = Main.getSession();
+        Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ nick + "'");
         List users = getUserQuery.list();
         if(users.isEmpty())
@@ -165,27 +220,4 @@ public class CosplayDatabaseManipulator {
 
     public static class CantFindFranchiseException extends Exception {
     }
-
-    public static void main(String[] argv)
-            throws AgeLowerThenOneException, EmptyStringException, CantFindTheUserException, CantFindFranchiseException {
-
-        try {
-            addUser("Shafear", 18);
-        } catch (DuplicateEntryException e) {
-            System.out.println(e.getClass().getName());
-        }
-        addCosplay(new Timestamp(new Date().getTime()), true, "Ginny", "Harry Potter", "Shafear");
-        addCosplay(new Timestamp(new Date().getTime()), true, "Hermione", "Harry Potter", "Shafear");
-        try {
-            addFranchise("Harry Potter", "Comedy");
-        }catch (DuplicateEntryException e){
-            System.out.println(e.getClass().getName());
-        }
-        changeUserAge("Shafear", 10);
-        UsersEntity shafear = getUserData("Shafear");
-        System.out.println(shafear.toString());
-        deleteUserAndHisCosplayData("Shafear");
-    }
-
-
 }
