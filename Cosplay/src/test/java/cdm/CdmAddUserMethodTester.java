@@ -1,7 +1,6 @@
 package cdm;
 
 import cosplay.UsersEntity;
-import crud.DuplicateEntryException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,7 +35,7 @@ public class CdmAddUserMethodTester extends CdmTester{
     }
 
 
-    @Test(expected = DuplicateEntryException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.DuplicateEntryException.class) //sprawdzam czy zostanie wyrzucony wyjątek
     public void wrongDataDuplicateEntryException() throws Exception{
         String nick = "Duplicate User";
         int age = 66;

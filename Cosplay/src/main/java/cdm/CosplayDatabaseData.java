@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jereczem on 22.11.15.
- *
- * Klasa zwracająca listy: użytkowników, cosplayów i uniwersów z bazy danych
+ * Klasa zwracająca listy: użytkowników, cosplayów i uniwersów z bazy danych.
  * Klasa NIE PODLEGA testowaniu - jest wykorzystywana jako obiekt do porównania w wynikach testów - zakładamy,
  * że działa bezbłędnie.
+ *
+ * @author Michał Jereczek
+ * @date 20.11.15.
  */
 public class CosplayDatabaseData {
 

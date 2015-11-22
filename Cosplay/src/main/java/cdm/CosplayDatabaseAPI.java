@@ -13,18 +13,20 @@ import java.util.List;
 
 
 /**
- * Created by Michał Jereczek on 20.11.15.
  * Klasa do manipulacji bazą danych o cosplayerach.
+ *
+ * @author Michał Jereczek
+ * @date 20.11.15.
  */
 public class CosplayDatabaseAPI {
     /**
      * Dodawanie użytkownika do bazy danych
      *
-     * @param nick
-     * @param age
-     * @throws DuplicateEntryException - wyrzuca, gdy chcemy dodać isniejącego już użytkownika (nick się powtarza)
-     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
-     * @throws AgeLowerThenOneException - wyrzuca, gdy age jest <= 0
+     * @param nick nick
+     * @param age wiek
+     * @throws DuplicateEntryException wyrzuca, gdy chcemy dodać isniejącego już użytkownika (nick się powtarza)
+     * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws AgeLowerThenOneException wyrzuca, gdy age jest <= 0
      */
     public static void addUser(String nick, Integer age)
             throws DuplicateEntryException, EmptyStringException, AgeLowerThenOneException {
@@ -56,8 +58,8 @@ public class CosplayDatabaseAPI {
      *
      * @param name
      * @param genre
-     * @throws DuplicateEntryException - wyrzuca, gdy chcemy dodać isniejące już uniwersum (name się powtarza)
-     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws DuplicateEntryException wyrzuca, gdy chcemy dodać isniejące już uniwersum (name się powtarza)
+     * @throws EmptyStringException wyrzuca, gdy w argumentach są puste Stringi
      */
     public static void addFranchise(String name, String genre) throws DuplicateEntryException, EmptyStringException {
         if(name.isEmpty() || genre.isEmpty())
@@ -89,9 +91,9 @@ public class CosplayDatabaseAPI {
      * @param characterName
      * @param franchiseName
      * @param userNick
-     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
-     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
-     * @throws CantFindFranchiseException -  wyrzuca, gdy nie można znaleźć franchiseName w bazie uniwersów
+     * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
+     * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws CantFindFranchiseException wyrzuca, gdy nie można znaleźć franchiseName w bazie uniwersów
      */
     public static void addCosplay(Timestamp date, Boolean isFavourite, String characterName, String franchiseName, String userNick)
             throws CantFindTheUserException, EmptyStringException, CantFindFranchiseException {
@@ -133,7 +135,7 @@ public class CosplayDatabaseAPI {
      * Usuwanie wszystkich danych użytkownika
      *
      * @param nick
-     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
+     * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
      */
     public static void deleteUserAndHisCosplayData(String nick) throws CantFindTheUserException {
         Session session = SessionGetter.getSession();
@@ -160,9 +162,9 @@ public class CosplayDatabaseAPI {
      *
      * @param nick
      * @param newAge
-     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
-     * @throws AgeLowerThenOneException - wyrzuca, gdy newAge jest <= 0
-     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
+     * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws AgeLowerThenOneException wyrzuca, gdy newAge jest <= 0
+     * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
      */
     public static void changeUserAge(String nick, Integer newAge) throws EmptyStringException, AgeLowerThenOneException, CantFindTheUserException {
         if(nick.isEmpty())
@@ -195,8 +197,8 @@ public class CosplayDatabaseAPI {
      *
      * @param nick
      * @return zwraca UsersEntity
-     * @throws EmptyStringException - wyrzuca, gdy w argurmentach są puste Stringi
-     * @throws CantFindTheUserException - wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
+     * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
+     * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
      */
     public static UsersEntity getUserData(String nick) throws EmptyStringException, CantFindTheUserException {
         if(nick.isEmpty())
@@ -219,5 +221,8 @@ public class CosplayDatabaseAPI {
     }
 
     public static class CantFindFranchiseException extends Exception {
+    }
+
+    public static class DuplicateEntryException extends Exception {
     }
 }

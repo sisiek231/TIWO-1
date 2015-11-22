@@ -1,5 +1,6 @@
 package crud;
 
+import cdm.CosplayDatabaseAPI;
 import cosplay.SessionGetter;
 import org.hibernate.*;
 import org.hibernate.exception.ConstraintViolationException;
@@ -13,7 +14,7 @@ import java.util.Map;
  */
 public class Crud {
     public static void create(Object entity)
-            throws UnknownEntityException, DuplicateEntryException, NotCompletedEntityDataException {
+            throws UnknownEntityException, CosplayDatabaseAPI.DuplicateEntryException, NotCompletedEntityDataException {
         final Session session = SessionGetter.getSession();
         try{
             session.beginTransaction();
@@ -22,7 +23,7 @@ public class Crud {
         }catch (MappingException e){
             throw new UnknownEntityException();
         }catch (ConstraintViolationException e){
-            throw new DuplicateEntryException();
+            throw new CosplayDatabaseAPI.DuplicateEntryException();
         }catch (PropertyValueException e){
             throw new NotCompletedEntityDataException();
         }
@@ -44,7 +45,7 @@ public class Crud {
         throw new UnknownEntityException();
     }
 
-    public static void update(Object entity) throws UnknownEntityException, DuplicateEntryException, NotCompletedEntityDataException, NotDeletedReferencesToOtherEntities {
+    public static void update(Object entity) throws UnknownEntityException, CosplayDatabaseAPI.DuplicateEntryException, NotCompletedEntityDataException, NotDeletedReferencesToOtherEntities {
         final Session session = SessionGetter.getSession();
         try{
             session.beginTransaction();
@@ -53,7 +54,7 @@ public class Crud {
         }catch (MappingException e){
             throw new UnknownEntityException();
         }catch (ConstraintViolationException e){
-            throw new DuplicateEntryException();
+            throw new CosplayDatabaseAPI.DuplicateEntryException();
         }catch (PropertyValueException e){
             throw new NotCompletedEntityDataException();
         }catch (HibernateException e){

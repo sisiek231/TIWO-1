@@ -29,9 +29,4 @@ public abstract class CdmTester {
         }
         session.getTransaction().commit();
     }
-
-    public static void main(String[] argv) throws Exception {
-        CdmAddUserMethodTester cdmAddUserMethodTester = new CdmAddUserMethodTester();
-        cdmAddUserMethodTester.setUp();
-    }
 }
