@@ -27,14 +27,16 @@ public class CosplayDatabaseAPI {
      * @throws DuplicateEntryException wyrzuca, gdy chcemy dodać isniejącego już użytkownika (nick się powtarza)
      * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
      * @throws AgeLowerThenOneException wyrzuca, gdy age jest <= 0
+     * @throws StringLongerThan45Exception wyrzuca, gdy istnieje String większy niż 45 znaków (limit bazy danych)
      */
     public static void addUser(String nick, Integer age)
-            throws DuplicateEntryException, EmptyStringException, AgeLowerThenOneException {
+            throws DuplicateEntryException, EmptyStringException, AgeLowerThenOneException, StringLongerThan45Exception {
         if(nick.isEmpty())
             throw new EmptyStringException();
         if(age <= 0)
             throw new AgeLowerThenOneException();
-
+        if(nick.length() > 45)
+            throw new StringLongerThan45Exception();
         Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ nick + "'");
         List users = getUserQuery.list();
@@ -60,11 +62,13 @@ public class CosplayDatabaseAPI {
      * @param genre
      * @throws DuplicateEntryException wyrzuca, gdy chcemy dodać isniejące już uniwersum (name się powtarza)
      * @throws EmptyStringException wyrzuca, gdy w argumentach są puste Stringi
+     * @throws StringLongerThan45Exception wyrzuca, gdy istnieje String większy niż 45 znaków (limit bazy danych)
      */
-    public static void addFranchise(String name, String genre) throws DuplicateEntryException, EmptyStringException {
+    public static void addFranchise(String name, String genre) throws DuplicateEntryException, EmptyStringException, StringLongerThan45Exception {
         if(name.isEmpty() || genre.isEmpty())
             throw new EmptyStringException();
-
+        if((name.length() > 45) || (genre.length() > 45))
+            throw new StringLongerThan45Exception();
         Session session = SessionGetter.getSession();
         Query getFranchiseQuery = session.createQuery("SELECT F FROM FranchiseEntity F WHERE F.name=" + "'"+ name + "'");
         List franchises = getFranchiseQuery.list();
@@ -94,11 +98,14 @@ public class CosplayDatabaseAPI {
      * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
      * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
      * @throws CantFindFranchiseException wyrzuca, gdy nie można znaleźć franchiseName w bazie uniwersów
+     * @throws StringLongerThan45Exception wyrzuca, gdy istnieje String większy niż 45 znaków (limit bazy danych)
      */
     public static void addCosplay(Timestamp date, Boolean isFavourite, String characterName, String franchiseName, String userNick)
-            throws CantFindTheUserException, EmptyStringException, CantFindFranchiseException {
+            throws CantFindTheUserException, EmptyStringException, CantFindFranchiseException, StringLongerThan45Exception {
         if(characterName.isEmpty() || userNick.isEmpty() || franchiseName.isEmpty())
             throw new EmptyStringException();
+        if((characterName.length() > 45) || (userNick.length() > 45) || (franchiseName.length() > 45))
+            throw new StringLongerThan45Exception();
         Session session = SessionGetter.getSession();
 
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ userNick + "'");
@@ -136,8 +143,14 @@ public class CosplayDatabaseAPI {
      *
      * @param nick
      * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć userNick w bazie użytkowników
+     * @throws StringLongerThan45Exception wyrzuca, gdy istnieje String większy niż 45 znaków (limit bazy danych)
+     * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
      */
-    public static void deleteUserAndHisCosplayData(String nick) throws CantFindTheUserException {
+    public static void deleteUserAndHisCosplayData(String nick) throws CantFindTheUserException, StringLongerThan45Exception, EmptyStringException {
+        if(nick.isEmpty())
+            throw new EmptyStringException();
+        if(nick.length() > 45)
+            throw new StringLongerThan45Exception();
         Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ nick + "'");
         List users = getUserQuery.list();
@@ -165,12 +178,15 @@ public class CosplayDatabaseAPI {
      * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
      * @throws AgeLowerThenOneException wyrzuca, gdy newAge jest <= 0
      * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
+     * @throws StringLongerThan45Exception wyrzuca, gdy istnieje String większy niż 45 znaków (limit bazy danych)
      */
-    public static void changeUserAge(String nick, Integer newAge) throws EmptyStringException, AgeLowerThenOneException, CantFindTheUserException {
+    public static void changeUserAge(String nick, Integer newAge) throws EmptyStringException, AgeLowerThenOneException, CantFindTheUserException, StringLongerThan45Exception {
         if(nick.isEmpty())
             throw new EmptyStringException();
         if(newAge <= 0)
             throw new AgeLowerThenOneException();
+        if(nick.length() > 45)
+            throw new StringLongerThan45Exception();
         Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'" + nick + "'");
         List users = getUserQuery.list();
@@ -199,10 +215,13 @@ public class CosplayDatabaseAPI {
      * @return zwraca UsersEntity
      * @throws EmptyStringException wyrzuca, gdy w argurmentach są puste Stringi
      * @throws CantFindTheUserException wyrzuca, gdy nie można znaleźć nick w bazie użytkowników
+     * @throws StringLongerThan45Exception wyrzuca, gdy istnieje String większy niż 45 znaków (limit bazy danych)
      */
-    public static UsersEntity getUserData(String nick) throws EmptyStringException, CantFindTheUserException {
+    public static UsersEntity getUserData(String nick) throws EmptyStringException, CantFindTheUserException, StringLongerThan45Exception {
         if(nick.isEmpty())
             throw new EmptyStringException();
+        if(nick.length() > 45)
+            throw new StringLongerThan45Exception();
         Session session = SessionGetter.getSession();
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ nick + "'");
         List users = getUserQuery.list();
@@ -224,5 +243,8 @@ public class CosplayDatabaseAPI {
     }
 
     public static class DuplicateEntryException extends Exception {
+    }
+
+    public static class StringLongerThan45Exception extends Exception {
     }
 }
