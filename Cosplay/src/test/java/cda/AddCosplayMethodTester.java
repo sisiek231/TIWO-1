@@ -53,4 +53,319 @@ public class AddCosplayMethodTester extends Tester {
         Assert.assertEquals(franchiseName, cosplay.get(0).getFranchiseByFranchiseId().getName());
         Assert.assertEquals(userNick, cosplay.get(0).getUsersByUsersId().getNick());
     }
+
+    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataCantFindTheUserException_NoUser() throws Exception{
+        //String nick = "TestUser";
+        //int age = 69;
+        //CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataCantFindTheUserException_WrongUserNick() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser99";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataEmptyStringException_CharacterName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataEmptyStringException_FranchiseName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataEmptyStringException_UserNick() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.CantFindFranchiseException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataCantFindFranchiseException_NoFranchise() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        //String name = "TestFranchise";
+        //String genre = "Mahou Shoujo";
+        //CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.CantFindFranchiseException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataCantFindFranchiseException_WrongFranchiseName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise99";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataStringLongerThan45Exception_CharacterName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacterTestCharacterTestCharacterTestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataStringLongerThan45Exception_FranchiseName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchiseTestFranchiseTestFranchiseTestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataStringLongerThan45Exception_UserNick() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUserTestUserTestUserTestUserTestUserTestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataNullPointerException_Date() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = null;
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataNullPointerException_Favourite() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = null;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataNullPointerException_CharacterName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = null;
+        String franchiseName = "TestFranchise";
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataNullPointerException_FranchiseName() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = null;
+        String userNick = "TestUser";
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
+
+    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    public void wrongDataNullPointerException_UserNick() throws Exception{
+        String nick = "TestUser";
+        int age = 69;
+        CosplayDatabaseAPI.addUser(nick, age);
+
+        String name = "TestFranchise";
+        String genre = "Mahou Shoujo";
+        CosplayDatabaseAPI.addFranchise(name, genre);
+
+        Date d = new Date();
+
+        Timestamp date = new Timestamp(d.getTime());
+        Boolean isFavourite = true;
+        String characterName = "TestCharacter";
+        String franchiseName = "TestFranchise";
+        String userNick = null;
+
+        CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
+    }
 }

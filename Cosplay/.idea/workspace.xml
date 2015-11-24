@@ -28,35 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Crud.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/crud/Crud.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddUserMethodTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddUserMethodTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CosplayDatabaseAPI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cda/CosplayDatabaseAPI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#CantFindTheUserException#0;class#CosplayDatabaseAPI#0" expanded="false" />
@@ -71,79 +47,10 @@
       <file leaf-file-name="AddCosplayMethodTester.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddCosplayMethodTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0909091">
-              <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
+            <state vertical-scroll-proportion="1.1442007">
+              <caret line="366" column="31" selection-start-line="366" selection-start-column="31" selection-end-line="366" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cda/Tester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddFranchiseMethodTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddFranchiseMethodTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChangeUserAgeMethodTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cda/ChangeUserAgeMethodTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeleteUserAndHisCosplayDataMethodTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cda/DeleteUserAndHisCosplayDataMethodTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetUserDataMethodTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cda/GetUserDataMethodTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CosplayDatabaseData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cda/CosplayDatabaseData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
-              <folding>
-                <element signature="e#806#807#0" expanded="false" />
-                <element signature="e#838#839#0" expanded="false" />
-                <element signature="e#899#900#0" expanded="false" />
-                <element signature="e#936#937#0" expanded="false" />
-                <element signature="e#992#993#0" expanded="false" />
-                <element signature="e#1026#1027#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -400,6 +307,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cosplay" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1027,38 +938,44 @@
       <workItem from="1448208727693" duration="4953000" />
       <workItem from="1448380859467" duration="911000" />
       <workItem from="1448390649029" duration="3017000" />
-      <workItem from="1448398827425" duration="1705000" />
+      <workItem from="1448398827425" duration="6057000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 01m 27s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 15m 18s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 15m 45s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 18m 12s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 17m 39s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 19m 48s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 18m 16s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 19m 58s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 18m 27s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 21m 57s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 18m 50s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 25m 41s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 28m 17s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 27m 11s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="cda_in_Cosplay - 2015.11.24 at 22h 28m 48s.xml">
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 31m 38s.xml">
+      <configuration name="cda in Cosplay" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 31m 57s.xml">
+      <configuration name="cda in Cosplay" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="cda_in_Cosplay - 2015.11.25 at 00h 34m 18s.xml">
       <configuration name="cda in Cosplay" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29361000" />
+    <option name="totallyTimeSpent" value="33713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="20" width="1922" height="1054" extended-state="0" />
@@ -1072,7 +989,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2952381" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2952381" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1553,21 +1470,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cda/Tester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddFranchiseMethodTester.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddUserMethodTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1579,10 +1496,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddUserMethodTester.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/cda/Tester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.3197492">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1592,7 +1509,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/cda/CosplayDatabaseAPI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#CantFindTheUserException#0;class#CosplayDatabaseAPI#0" expanded="false" />
@@ -1605,8 +1522,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cda/AddCosplayMethodTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0909091">
-          <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
+        <state vertical-scroll-proportion="1.1442007">
+          <caret line="366" column="31" selection-start-line="366" selection-start-column="31" selection-end-line="366" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
