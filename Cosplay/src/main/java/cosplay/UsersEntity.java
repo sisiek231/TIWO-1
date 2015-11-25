@@ -1,5 +1,7 @@
 package cosplay;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -76,7 +78,8 @@ public class UsersEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "usersByUsersId")
+    @OneToMany(mappedBy = "usersByUsersId", orphanRemoval=true, cascade = { CascadeType.MERGE,
+            CascadeType.REMOVE, CascadeType.REFRESH })
     public Collection<CosplayEntity> getCosplaysByIdUsers() {
         return cosplaysByIdUsers;
     }

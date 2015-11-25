@@ -21,12 +21,12 @@ public class DeleteUserAndHisCosplayDataMethodTester extends Tester {
         Timestamp data = new Timestamp(da.getTime());
         Boolean isFavourite = true;
         String nick ="testuser";
-        //dodanie urzydkownika - nie wymaga testu
+        //dodanie uzytkowinka - nie wymaga testu
         CosplayDatabaseAPI.addUser("testuser", 6 );
         CosplayDatabaseAPI.addFranchise("testf", "testgen");
         CosplayDatabaseAPI.addCosplay(data, isFavourite, "testchara", "testf", "testuser");
 
-        //usuniecie urzydkowinka przy urzyciu testowanej metody
+        //usuniecie uzytkowinka przy urzyciu testowanej metody
         CosplayDatabaseAPI.deleteUserAndHisCosplayData(nick);
 
         //sprawdzenie czy funkcja wykonała zadanie

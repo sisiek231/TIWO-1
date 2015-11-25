@@ -28,5 +28,6 @@ public abstract class Tester {
             session.delete(obj);
         }
         session.getTransaction().commit();
+        session.close();
     }
 }

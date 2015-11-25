@@ -82,6 +82,7 @@ public class Crud {
         //}*/
         if(!isEntityFound)
             throw new UnknownEntityException();
+        session.close();
     }
 
     public static void main(final String[] args){

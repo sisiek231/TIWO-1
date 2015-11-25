@@ -140,6 +140,7 @@ public class CosplayDatabaseAPI {
         } catch (NotCompletedEntityDataException e) {
             System.out.println(e.getClass().getName());
         }
+
     }
 
     /**
