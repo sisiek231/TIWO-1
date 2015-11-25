@@ -44,8 +44,8 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseData cDD = new CosplayDatabaseData();
         ArrayList<CosplayEntity> cosplay = cDD.getCosplayList();
 
-        // Wiem, że baza danych była pusta na początku, więc po dodaniu powinien być tylko jeden użytkownik
-        // Sprawdzam, czy ten użytkownik zgadza się z tym, którego przed chwilą dodałem
+        // Wiem, że baza danych była pusta na początku, więc po dodaniu powinien być tylko jeden cosplay
+        // Sprawdzam, czy ten cosplay zgadza się z tym, którego przed chwilą dodałem
         Assert.assertEquals(cosplay.size(), 1);
         Assert.assertEquals(date, cosplay.get(0).getDate());
         Assert.assertEquals(isFavourite, cosplay.get(0).isFavourite());
@@ -54,7 +54,8 @@ public class AddCosplayMethodTester extends Tester {
         Assert.assertEquals(userNick, cosplay.get(0).getUsersByUsersId().getNick());
     }
 
-    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    //Poniżej wszystkie możliwe wyjątki
+    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class)
     public void wrongDataCantFindTheUserException_NoUser() throws Exception{
         //String nick = "TestUser";
         //int age = 69;
@@ -75,7 +76,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class)
     public void wrongDataCantFindTheUserException_WrongUserNick() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -96,7 +97,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class)
     public void wrongDataEmptyStringException_CharacterName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -117,7 +118,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class)
     public void wrongDataEmptyStringException_FranchiseName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -138,7 +139,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class)
     public void wrongDataEmptyStringException_UserNick() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -159,7 +160,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.CantFindFranchiseException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.CantFindFranchiseException.class)
     public void wrongDataCantFindFranchiseException_NoFranchise() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -180,7 +181,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.CantFindFranchiseException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.CantFindFranchiseException.class)
     public void wrongDataCantFindFranchiseException_WrongFranchiseName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -201,7 +202,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class)
     public void wrongDataStringLongerThan45Exception_CharacterName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -222,7 +223,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class)
     public void wrongDataStringLongerThan45Exception_FranchiseName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -243,7 +244,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class)
     public void wrongDataStringLongerThan45Exception_UserNick() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -264,7 +265,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = NullPointerException.class)
     public void wrongDataNullPointerException_Date() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -285,7 +286,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = NullPointerException.class)
     public void wrongDataNullPointerException_Favourite() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -306,7 +307,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = NullPointerException.class)
     public void wrongDataNullPointerException_CharacterName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -327,7 +328,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = NullPointerException.class)
     public void wrongDataNullPointerException_FranchiseName() throws Exception{
         String nick = "TestUser";
         int age = 69;
@@ -348,7 +349,7 @@ public class AddCosplayMethodTester extends Tester {
         CosplayDatabaseAPI.addCosplay(date, isFavourite, characterName, franchiseName, userNick);
     }
 
-    @Test(expected = NullPointerException.class) //sprawdzam czy zostanie wyrzucony wyjątek
+    @Test(expected = NullPointerException.class)
     public void wrongDataNullPointerException_UserNick() throws Exception{
         String nick = "TestUser";
         int age = 69;
