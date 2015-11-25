@@ -1,7 +1,11 @@
 package cda;
 
 import cosplay.UsersEntity;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class GetUserDataMethodTester extends Tester {
     /*
@@ -21,13 +25,12 @@ getUserData(String nick) throws EmptyStringException, CantFindTheUserException, 
         String characterName = "testch";
         CosplayDatabaseAPI.addUser(nick, age);
         CosplayDatabaseAPI.addFranchise(name, genre);
-        CosplayDatabaseAPI.addCosplay(data, isFavourite, characterName, genre, nick);
+        CosplayDatabaseAPI.addCosplay(data, isFavourite, characterName, name, nick);
 
         UsersEntity user = CosplayDatabaseAPI.getUserData(nick);
 
-        Assert.assertEquals(user.getAge(), age );
+        Assert.assertEquals(user.getAge(), age);
         Assert.assertEquals(user.getNick(), nick);
-        Assert.assertEquals(user.getIdUsers(), 0);
         //user.getCosplaysByIdUsers()
 
     }

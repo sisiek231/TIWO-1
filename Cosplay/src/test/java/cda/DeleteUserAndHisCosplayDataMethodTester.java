@@ -2,7 +2,12 @@ package cda;
 
 import cosplay.CosplayEntity;
 import cosplay.UsersEntity;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class DeleteUserAndHisCosplayDataMethodTester extends Tester {
     /*
