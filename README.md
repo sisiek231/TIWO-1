@@ -7,3 +7,5 @@ Projekt polegający na przeprowadzeniu testów biało-skrzynkowych. Obiektem tes
 • Użyte technologie: <b>Java SE, Hibernate, MySQL, jUnit</b>
 
 • Tematy: Testowanie, weryfikacja, walidacja.
+
+• Autorzy: Jadczak Krzysztof, Jereczek Michał, Łopatka Jagoda, Porowski Dariusz
