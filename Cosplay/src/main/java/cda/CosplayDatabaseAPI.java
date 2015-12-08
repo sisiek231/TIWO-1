@@ -4,7 +4,10 @@ import cosplay.CosplayEntity;
 import cosplay.FranchiseEntity;
 import cosplay.SessionGetter;
 import cosplay.UsersEntity;
-import crud.*;
+import crud.Crud;
+import crud.NotCompletedEntityDataException;
+import crud.NotDeletedReferencesToOtherEntities;
+import crud.UnknownEntityException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -20,6 +23,7 @@ import java.util.List;
  * @date 20.11.15.
  */
 public class CosplayDatabaseAPI {
+
     /**
      * Dodawanie użytkownika do bazy danych
      *
