@@ -41,49 +41,43 @@ public class CosplayNamesAPI {
      * Uwaga! imiona nie mogą się powtarzać.
      */
     public static ArrayList<String> getUserNamesCosplayedForSomeoneFrom(FranchiseInfo fInfo){
-        String franchiseName = fInfo.getFranchiseName(); //to musi być użyte aby odszukac
+        String franchiseName = fInfo.getFranchiseName(); //to musi być użyte, aby odszukać
         CosplayDatabaseData cdd = new CosplayDatabaseData();
         ArrayList<FranchiseEntity> franchises = cdd.getFranchisesList();
         ArrayList<String> users = new ArrayList<String>();
         boolean exists;
 
-        //System.out.println(franchiseName); //o tozwraca null;
-
+        //przeszukiwanie listy franchise'ów po kolei szukając z nazwą z argumentu
         for(FranchiseEntity franchise : franchises){
-            //System.out.println(franchise.getName());
+            //jeśli znaleziony
             if(franchise.getName().equals(franchiseName)){
-                //System.out.println("franchise.getName().equals(franchiseName)");
+                //to weź jego listę cosplay'ów
                 Collection<CosplayEntity> cosplays = franchise.getCosplaysByIdFranchise();
+                //dla każdego cosplay'u z listy szukamy user'ów, którzy się przebierali
                 for(CosplayEntity cosplay : cosplays){
-                    //System.out.println(cosplay.getCharacterName());
                     exists = false;
                     UsersEntity user = cosplay.getUsersByUsersId();
                     String nick = user.getNick();
+                    //trzeba sprawdzić czy user się nie powtarza na liście
                     for(String userNick : users){
                         if(userNick.equals(nick)){
                             exists = true;
+                            //jeśli już jest taki to break; nie opłaca się dalej szukać
                             break;
                         }
                     }
                     if(exists == false){
-                        System.out.println(nick);
+                        //jeśli nie było takiego użytkownika już na liście to go dodajemy
                         users.add(nick);
-                        System.out.println(users.get(0));
                     }
                 }
+                //break pętli for szukającego odpowiedniego franchise; znaleźliśmy ten co chcieliśmy więc nie ma po co szukać dalej
                 break;
             }
         }
 
+        //zwróć listę user'ów
         return users;
-        /* Coś takiego powinno zwrócić aby przejść 2 pierwsze scenariusze, (trzeci to po prostu pusta lista)
-        ArrayList<String> names = new ArrayList<String>();
-        names.add("ThreeXe");
-        names.add("Shafear");
-        return names;
-        */
-
-        //throw new NotImplementedException();
     }
 
     /**
