@@ -37,11 +37,10 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CosplayDatabaseAPI.addCosplay(new Timestamp(new Date().getTime()), true, characterName, franchiseName, userNick1);
         CosplayDatabaseAPI.addCosplay(new Timestamp(new Date().getTime()), true, characterName, franchiseName, userNick2);
 
-        EasyMock.replay(characterInfo);
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedFor(characterInfo);
         Assert.assertEquals(2, userNames.size());
         Assert.assertTrue(userNames.contains(userNick1));
-        Assert.assertTrue(userNames.contains(userNick1));
+        Assert.assertTrue(userNames.contains(userNick2));
     }
 
     /**
@@ -70,7 +69,7 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedFor(characterInfo);
         Assert.assertEquals(2, userNames.size());
         Assert.assertTrue(userNames.contains(userNick1));
-        Assert.assertTrue(userNames.contains(userNick1));
+        Assert.assertTrue(userNames.contains(userNick2));
     }
 
     /**
@@ -130,6 +129,6 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedFor(characterInfo);
         Assert.assertEquals(2, userNames.size());
         Assert.assertTrue(userNames.contains(userNick1));
-        Assert.assertTrue(userNames.contains(userNick1));
+        Assert.assertTrue(userNames.contains(userNick2));
     }
 }

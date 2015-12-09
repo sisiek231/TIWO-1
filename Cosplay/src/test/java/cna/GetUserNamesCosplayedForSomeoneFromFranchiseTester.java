@@ -40,7 +40,7 @@ public class GetUserNamesCosplayedForSomeoneFromFranchiseTester extends Tester{
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedForSomeoneFrom(franchiseInfo);
         Assert.assertEquals(2, userNames.size());
         Assert.assertTrue(userNames.contains(userNick1));
-        Assert.assertTrue(userNames.contains(userNick1));
+        Assert.assertTrue(userNames.contains(userNick2));
     }
 
     /**
@@ -68,7 +68,7 @@ public class GetUserNamesCosplayedForSomeoneFromFranchiseTester extends Tester{
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedForSomeoneFrom(franchiseInfo);
         Assert.assertEquals(userNames.size(), 2); //Shafear nie moze sie dublowac, proste!
         Assert.assertTrue(userNames.contains(userNick1));
-        Assert.assertTrue(userNames.contains(userNick1));
+        Assert.assertTrue(userNames.contains(userNick2));
     }
 
     /**
