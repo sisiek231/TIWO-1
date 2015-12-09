@@ -1,10 +1,15 @@
 package cna;
 
+import cda.CosplayDatabaseData;
 import cna.interfaces.CharacterInfo;
 import cna.interfaces.FranchiseInfo;
+import cosplay.CosplayEntity;
+import cosplay.FranchiseEntity;
+import cosplay.UsersEntity;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Do napisania funkcjonalności powinny wystarczyć metody z CosplayDatabaseData, po prostu trzeba przeszukac to co dostarczaja i zwrocic wynik.
@@ -37,7 +42,40 @@ public class CosplayNamesAPI {
      */
     public static ArrayList<String> getUserNamesCosplayedForSomeoneFrom(FranchiseInfo fInfo){
         String franchiseName = fInfo.getFranchiseName(); //to musi być użyte aby odszukac
+        CosplayDatabaseData cdd = new CosplayDatabaseData();
+        ArrayList<FranchiseEntity> franchises = cdd.getFranchisesList();
+        ArrayList<String> users = new ArrayList<String>();
+        boolean exists;
 
+        //System.out.println(franchiseName); //o tozwraca null;
+
+        for(FranchiseEntity franchise : franchises){
+            //System.out.println(franchise.getName());
+            if(franchise.getName().equals(franchiseName)){
+                //System.out.println("franchise.getName().equals(franchiseName)");
+                Collection<CosplayEntity> cosplays = franchise.getCosplaysByIdFranchise();
+                for(CosplayEntity cosplay : cosplays){
+                    //System.out.println(cosplay.getCharacterName());
+                    exists = false;
+                    UsersEntity user = cosplay.getUsersByUsersId();
+                    String nick = user.getNick();
+                    for(String userNick : users){
+                        if(userNick.equals(nick)){
+                            exists = true;
+                            break;
+                        }
+                    }
+                    if(exists == false){
+                        System.out.println(nick);
+                        users.add(nick);
+                        System.out.println(users.get(0));
+                    }
+                }
+                break;
+            }
+        }
+
+        return users;
         /* Coś takiego powinno zwrócić aby przejść 2 pierwsze scenariusze, (trzeci to po prostu pusta lista)
         ArrayList<String> names = new ArrayList<String>();
         names.add("ThreeXe");
@@ -45,7 +83,7 @@ public class CosplayNamesAPI {
         return names;
         */
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     /**
