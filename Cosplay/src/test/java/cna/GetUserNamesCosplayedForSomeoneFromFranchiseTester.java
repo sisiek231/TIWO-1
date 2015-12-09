@@ -10,6 +10,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static org.easymock.EasyMock.replay;
+
 /**
  * Created by jereczem on 08.12.15.
  */
@@ -26,6 +28,7 @@ public class GetUserNamesCosplayedForSomeoneFromFranchiseTester extends Tester{
 
         FranchiseInfo franchiseInfo = EasyMock.createMock(FranchiseInfo.class);
         EasyMock.expect(franchiseInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(franchiseInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick1, 21);
@@ -52,6 +55,7 @@ public class GetUserNamesCosplayedForSomeoneFromFranchiseTester extends Tester{
 
         FranchiseInfo franchiseInfo = EasyMock.createMock(FranchiseInfo.class);
         EasyMock.expect(franchiseInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(franchiseInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick1, 21);
@@ -78,6 +82,7 @@ public class GetUserNamesCosplayedForSomeoneFromFranchiseTester extends Tester{
 
         FranchiseInfo franchiseInfo = EasyMock.createMock(FranchiseInfo.class);
         EasyMock.expect(franchiseInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(franchiseInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick1, 21);

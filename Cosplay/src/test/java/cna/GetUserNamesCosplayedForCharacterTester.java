@@ -10,6 +10,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static org.easymock.EasyMock.replay;
+
 /**
  * Created by jereczem on 08.12.15.
  */
@@ -27,6 +29,7 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CharacterInfo characterInfo = EasyMock.createMock(CharacterInfo.class);
         EasyMock.expect(characterInfo.getCharacterName()).andReturn(characterName);
         EasyMock.expect(characterInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(characterInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick1, 21);
@@ -54,6 +57,7 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CharacterInfo characterInfo = EasyMock.createMock(CharacterInfo.class);
         EasyMock.expect(characterInfo.getCharacterName()).andReturn(characterName);
         EasyMock.expect(characterInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(characterInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick1, 21);
@@ -82,6 +86,7 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CharacterInfo characterInfo = EasyMock.createMock(CharacterInfo.class);
         EasyMock.expect(characterInfo.getCharacterName()).andReturn(characterName);
         EasyMock.expect(characterInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(characterInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick1, 21);
@@ -107,6 +112,7 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CharacterInfo characterInfo = EasyMock.createMock(CharacterInfo.class);
         EasyMock.expect(characterInfo.getCharacterName()).andReturn(characterName);
         EasyMock.expect(characterInfo.getFranchiseName()).andReturn(franchiseName);
+        replay(characterInfo);
 
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");

@@ -29,6 +29,7 @@ public class GetCharacterNamesFromFranchiseTester extends Tester{
 
         FranchiseInfo franchiseInfo = EasyMock.createMock(FranchiseInfo.class);
         EasyMock.expect(franchiseInfo.getFranchiseName()).andReturn(franchiseName);
+        EasyMock.replay(franchiseInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick, 21);
@@ -56,6 +57,7 @@ public class GetCharacterNamesFromFranchiseTester extends Tester{
 
         FranchiseInfo franchiseInfo = EasyMock.createMock(FranchiseInfo.class);
         EasyMock.expect(franchiseInfo.getFranchiseName()).andReturn(franchiseName);
+        EasyMock.replay(franchiseInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
         CosplayDatabaseAPI.addUser(userNick, 21);
@@ -80,6 +82,7 @@ public class GetCharacterNamesFromFranchiseTester extends Tester{
 
         FranchiseInfo franchiseInfo = EasyMock.createMock(FranchiseInfo.class);
         EasyMock.expect(franchiseInfo.getFranchiseName()).andReturn(franchiseName);
+        EasyMock.replay(franchiseInfo);
 
         CosplayDatabaseAPI.addFranchise(franchiseName, "Comedy");
 
