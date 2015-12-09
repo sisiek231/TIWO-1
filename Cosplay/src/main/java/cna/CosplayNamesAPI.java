@@ -23,17 +23,54 @@ public class CosplayNamesAPI {
      * Uwaga! Pamiętajcie, że samo imię postaci do za mało, musi się zgadzać jego franczyza!
      */
     public static ArrayList<String> getUserNamesCosplayedFor(CharacterInfo cInfo){
-        String franchiseName = cInfo.getFranchiseName(); //to musi być użyte aby odszukac
-        String characterName = cInfo.getCharacterName(); //to musi być użyte aby odszukac
 
-        /* Coś takiego powinno zwrócić aby przejść 2 pierwsze scenariusze oraz czwarty, (trzeci to po prostu pusta lista)
+        String franchiseName = cInfo.getFranchiseName();
+        String characterName = cInfo.getCharacterName();
+
+        boolean duplicated;
         ArrayList<String> names = new ArrayList<String>();
-        names.add("ThreeXe");
-        names.add("Shafear");
-        return names;
-        */
 
-        throw new NotImplementedException();
+        CosplayDatabaseData c = new CosplayDatabaseData();
+        ArrayList<CosplayEntity> chr = c.getCosplayList();
+
+        //sprawdzamy cosplayów pod względem nazw postaci
+        for ( CosplayEntity cospaly : chr)
+        {
+            //jak jest taka jak szukamy...
+            if(cospaly.getCharacterName().equals(characterName)){
+
+                Collection<FranchiseEntity> fr = cospaly.getFranchiseByFranchiseId();
+            //to sprawdzamy jej frenchisy
+                for (FranchiseEntity frenchise : fr)
+                {
+                    //jak są zgodne to..
+                    if(frenchise.getName().equals(franchiseName)){
+                        duplicated = false;
+                        UsersEntity users = cosplay.getUsersByUsersId();
+                        String uname = users.getNick();
+                        //sprawdzamy czy się nie zduplikują
+                        for (String nu : names)
+                        {
+                            if(nu.equals(uname)){
+                                //jest nie dodajemy
+                                duplicated = true;
+                                break;
+                            }
+                            if(duplicated == false){
+                                //nie bylo -> dodaj
+                                names.add(uname);
+                            }
+                        }
+                        break;
+                    }
+
+                }
+                break;
+            }
+
+        }
+
+        return names;
     }
 
     /**
