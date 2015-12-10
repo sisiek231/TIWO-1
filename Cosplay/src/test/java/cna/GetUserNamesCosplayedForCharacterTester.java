@@ -65,7 +65,6 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CosplayDatabaseAPI.addCosplay(new Timestamp(new Date().getTime()), true, characterName, franchiseName, userNick1); //tutaj się powtarza :)
         CosplayDatabaseAPI.addCosplay(new Timestamp(new Date().getTime()), true, characterName, franchiseName, userNick2);
 
-        EasyMock.replay(characterInfo);
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedFor(characterInfo);
         Assert.assertEquals(2, userNames.size());
         Assert.assertTrue(userNames.contains(userNick1));
@@ -91,7 +90,6 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CosplayDatabaseAPI.addUser(userNick1, 21);
         CosplayDatabaseAPI.addUser(userNick2, 21);
 
-        EasyMock.replay(characterInfo);
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedFor(characterInfo);
         Assert.assertEquals(0, userNames.size()); //pusto!
     }
@@ -125,7 +123,6 @@ public class GetUserNamesCosplayedForCharacterTester extends Tester{
         CosplayDatabaseAPI.addCosplay(new Timestamp(new Date().getTime()), true, characterName, franchiseNameFake, userNickFake); //ups, tutaj doszedl pikaczu, ale z Digimonow i do tego do FakeNicku!
         CosplayDatabaseAPI.addCosplay(new Timestamp(new Date().getTime()), true, characterName, franchiseName, userNick2);
 
-        EasyMock.replay(characterInfo);
         ArrayList<String> userNames = CosplayNamesAPI.getUserNamesCosplayedFor(characterInfo);
         Assert.assertEquals(2, userNames.size());
         Assert.assertTrue(userNames.contains(userNick1));

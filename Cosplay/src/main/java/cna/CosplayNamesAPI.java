@@ -6,7 +6,6 @@ import cna.interfaces.FranchiseInfo;
 import cosplay.CosplayEntity;
 import cosplay.FranchiseEntity;
 import cosplay.UsersEntity;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,50 +25,22 @@ public class CosplayNamesAPI {
 
         String franchiseName = cInfo.getFranchiseName();
         String characterName = cInfo.getCharacterName();
-
-        boolean duplicated;
         ArrayList<String> names = new ArrayList<String>();
 
-        CosplayDatabaseData c = new CosplayDatabaseData();
-        ArrayList<CosplayEntity> chr = c.getCosplayList();
-
-        //sprawdzamy cosplayów pod względem nazw postaci
-        for ( CosplayEntity cospaly : chr)
-        {
-            //jak jest taka jak szukamy...
-            if(cospaly.getCharacterName().equals(characterName)){
-
-                Collection<FranchiseEntity> fr = cospaly.getFranchiseByFranchiseId();
-            //to sprawdzamy jej frenchisy
-                for (FranchiseEntity frenchise : fr)
-                {
-                    //jak są zgodne to..
-                    if(frenchise.getName().equals(franchiseName)){
-                        duplicated = false;
-                        UsersEntity users = cosplay.getUsersByUsersId();
-                        String uname = users.getNick();
-                        //sprawdzamy czy się nie zduplikują
-                        for (String nu : names)
-                        {
-                            if(nu.equals(uname)){
-                                //jest nie dodajemy
-                                duplicated = true;
-                                break;
-                            }
-                            if(duplicated == false){
-                                //nie bylo -> dodaj
-                                names.add(uname);
-                            }
-                        }
-                        break;
+        CosplayDatabaseData cda = new CosplayDatabaseData();
+        Collection<FranchiseEntity> fCollection = cda.getFranchisesList();
+        for(FranchiseEntity fEntity : fCollection){
+            if(fEntity.getName().equals(franchiseName)){
+                Collection<CosplayEntity> cCollection= fEntity.getCosplaysByIdFranchise();
+                for(CosplayEntity cEntity : cCollection){
+                    if(cEntity.getCharacterName().equals(characterName)){
+                        UsersEntity uEntity = cEntity.getUsersByUsersId();
+                        if(!names.contains(uEntity.getNick()))
+                            names.add(uEntity.getNick());
                     }
-
                 }
-                break;
             }
-
         }
-
         return names;
     }
 
