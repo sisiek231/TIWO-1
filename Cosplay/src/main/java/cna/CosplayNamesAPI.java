@@ -123,7 +123,30 @@ public class CosplayNamesAPI {
      */
     public static ArrayList<String> getCharacterNamesFrom(FranchiseInfo fInfo){
         String franchiseName = fInfo.getFranchiseName(); //to musi być użyte aby odszukac
+        CosplayDatabaseData cdd = new CosplayDatabaseData();
+        ArrayList<FranchiseEntity> franchisez = cdd.getFranchisesList();
+        ArrayList<String> names = new ArrayList<String>();
+        boolean wolne;
 
+        for(FranchiseEntity franchise : franchisez){
+            if(franchise.getName().equals(franchiseName)){
+                Collection<CosplayEntity> charname = franchise.getCosplaysByIdFranchise();  //franchise.getCosplaysByIdFranchise();
+                for(CosplayEntity cosplay : charname){
+                    wolne = false;
+                    String characterName = cosplay.getCharacterName();
+                    for(String charNames : names){
+                        if(charNames.equals(characterName)){
+                            wolne = true;
+                            break;
+                        }
+                    }
+                    if(wolne == false){
+                        names.add(characterName);
+                    }
+            }
+            break;
+        }
+        }
         /* Coś takiego powinno zwrócić aby przejść 2 pierwsze scenariusze, (trzeci to po prostu pusta lista)
         ArrayList<String> names = new ArrayList<String>();
         names.add("Charizard");
@@ -131,7 +154,8 @@ public class CosplayNamesAPI {
         names.add("Pichu");
         return names;
         */
-
-        throw new NotImplementedException();
+        return names;
+      //  throw new NotImplementedException();
     }
+
 }
