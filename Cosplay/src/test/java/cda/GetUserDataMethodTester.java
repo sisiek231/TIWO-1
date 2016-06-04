@@ -1,19 +1,61 @@
 package cda;
 
+import cosplay.UsersEntity;
+import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by jereczem on 22.11.15.
- */
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class GetUserDataMethodTester extends Tester {
     /*
-     * Każda klasa testująca powinna rozwijać klasę abstrakcyjną Tester,
-     * dzięku czemu przed testowaniem każdej metody CAŁA baza danych jest usuwana, dlatego możemy przewidzieć dokładnie
-     * jak powinna ona wyglądać po przeprowadzeniu operacji, które testujemy.
+getUserData(String nick) throws EmptyStringException, CantFindTheUserException, StringLongerThan45Exception
      */
 
     @Test
     public void correctData() throws Exception{
 
+        String nick = "usertest";
+        int age = 6;
+        String name = "testf";
+        String genre = "testg";
+        Date da = new Date();
+        Timestamp data = new Timestamp(da.getTime());
+        Boolean isFavourite = true;
+        String characterName = "testch";
+        CosplayDatabaseAPI.addUser(nick, age);
+        CosplayDatabaseAPI.addFranchise(name, genre);
+        CosplayDatabaseAPI.addCosplay(data, isFavourite, characterName, name, nick);
+
+        UsersEntity user = CosplayDatabaseAPI.getUserData(nick);
+
+        Assert.assertEquals(user.getAge(), age);
+        Assert.assertEquals(user.getNick(), nick);
+        //user.getCosplaysByIdUsers()
+
     }
+
+    @Test(expected = CosplayDatabaseAPI.EmptyStringException.class) //wyrzucony wyjątek?
+    public void wrongDataEmptyStringException() throws Exception{
+
+        String nick ="";
+        CosplayDatabaseAPI.getUserData(nick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.CantFindTheUserException.class) //wyrzucony wyjatek?
+    public void wrongDataCantFindTheUserException() throws Exception {
+
+        //pusta baza wiec nie bedzie tego uzytkownika
+        String nick ="hakunamatata";
+        CosplayDatabaseAPI.getUserData(nick);
+    }
+
+    @Test(expected = CosplayDatabaseAPI.StringLongerThan45Exception.class) // wyrzucony wyjątek?
+    public void wrongDataStringLongerThan45Exception() throws Exception{
+
+        String nick ="testusereetestusereetestusereetestusereetestusereetestuseree";
+        CosplayDatabaseAPI.getUserData(nick);
+    }
+
+
 }

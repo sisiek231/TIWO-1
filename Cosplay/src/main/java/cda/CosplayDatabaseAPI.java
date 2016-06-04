@@ -4,11 +4,15 @@ import cosplay.CosplayEntity;
 import cosplay.FranchiseEntity;
 import cosplay.SessionGetter;
 import cosplay.UsersEntity;
-import crud.*;
+import crud.Crud;
+import crud.NotCompletedEntityDataException;
+import crud.NotDeletedReferencesToOtherEntities;
+import crud.UnknownEntityException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -19,6 +23,7 @@ import java.util.List;
  * @date 20.11.15.
  */
 public class CosplayDatabaseAPI {
+
     /**
      * Dodawanie użytkownika do bazy danych
      *
@@ -106,6 +111,9 @@ public class CosplayDatabaseAPI {
             throw new EmptyStringException();
         if((characterName.length() > 45) || (userNick.length() > 45) || (franchiseName.length() > 45))
             throw new StringLongerThan45Exception();
+
+        date.setTime(roundMillisInDate(date.getTime())); //bug fix
+
         Session session = SessionGetter.getSession();
 
         Query getUserQuery = session.createQuery("SELECT U FROM UsersEntity U WHERE U.nick=" + "'"+ userNick + "'");
@@ -136,6 +144,7 @@ public class CosplayDatabaseAPI {
         } catch (NotCompletedEntityDataException e) {
             System.out.println(e.getClass().getName());
         }
+
     }
 
     /**
@@ -246,5 +255,16 @@ public class CosplayDatabaseAPI {
     }
 
     public static class StringLongerThan45Exception extends Exception {
+    }
+
+    private static long roundMillisInDate(long date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
+        int milliseconds = calendar.get(Calendar.MILLISECOND);
+        if(milliseconds >= 500){
+            calendar.set(Calendar.SECOND, calendar.get(Calendar.SECOND) + 1);
+        }
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime().getTime();
     }
 }
